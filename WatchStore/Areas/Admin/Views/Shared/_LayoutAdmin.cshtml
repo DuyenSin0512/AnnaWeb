@@ -1,0 +1,254 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="~/Public/admins/img/favicon-16x16.png">
+    <title>Quản trị hệ thống: @ViewBag.Title</title>
+    <link href="~/Public/admin/status/css/style.css?v=1" rel="stylesheet" />
+    <link href="~/Public/admins/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Public/admin/status/css/sweetalert2.min.css" rel="stylesheet" />
+    <link href="~/Public/admin/status/css/toastr.min.css" rel="stylesheet" />
+
+    <link href="~/Public/admins/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="~/Public/admins/css/animate.css" rel="stylesheet" />
+    <link href="~/Public/admins/style.css" rel="stylesheet" />
+    <!-- FooTable -->
+    <link href="~/Public/admins/css/plugins/footable/footable.core.css" rel="stylesheet">
+    <script type="text/javascript" src="~/Public/admin/status/ckeditor/ckeditor.js"></script>
+
+</head>
+
+<body>
+    <style>
+        .navbar-top-links .dropdown-alerts {
+            width: 230px;
+        }
+    </style>
+    <div id="wrapper">
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav metismenu" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element">
+
+                            <a href="#" style="text-align: center;">
+                                <h1 class="block m-t-xs font-bold">@Session["Admin_Name"]</h1>
+                                @if (Convert.ToInt32(@Session["Role"]) == 2)
+                                {
+                                    <span class="text-muted text-xs block">Quản trị viên</span>
+
+                                }
+                                else
+                                {
+                                    <span class="text-muted text-xs block">Nhân viên</span>
+
+                                }
+                            </a>
+
+                        </div>
+                        <div class="logo-element">
+                            ADMIN
+                        </div>
+                    </li>
+
+                    <li class="active">
+                        <a href="@Url.Action("Index","Dashboard")"><i class="fa fa-tachometer"></i> <span class="nav-label">Thống kê & báo cáo</span></a>
+
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-bars"></i> <span class="nav-label">Quản lý sản phẩm</span> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="@Url.Action("Index","Category")" class="">Danh mục sản phẩm</a> </li>
+                            <li>
+                                <a href="@Url.Action("Index","Product")">Sản phẩm</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-bars"></i> <span class="nav-label">Quản lý tin tức</span> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="@Url.Action("Index","Topic")">Danh mục bài viết</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index","Post")">Bài viết</a>
+                            </li>
+                            <li>
+                                @*<a href="@Url.Action("Index","Page")">Trang đơn</a>*@
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="@Url.Action("Index","Order")"><i class="fa fa-shopping-bag"></i> <span>Quản lý đơn hàng</span> </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Users")"><i class="fa fa-users"></i> <span>Quản lý khách hàng</span> </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Contact")"><i class="fa fa-id-card"></i> <span>Quản lý liên hệ</span> </a>
+                    </li>
+
+                    <li>
+                        <a href="@Url.Action("Index","Slider")"><i class="fa fa-bars"></i> <span class="nav-label">Quản lý giao diện</span> </a>
+                    </li>
+                    @if (Convert.ToInt32(@Session["Role"]) == 2)
+                    {
+                        <li>
+                            <a href="@Url.Action("Index","User")"><i class="fa fa-bars"></i> <span class="nav-label">Quản lý nhân viên</span> </a>
+                        </li>
+                    }
+
+
+                </ul>
+
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header">
+                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                        <form role="search" class="navbar-form-custom" action="#">
+                            <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
+                                <div class="input-group">
+                                    <input type="search" id="searchName" name="searchAdmin" placeholder="Nhập từ bạn cần tìm?" aria-describedby="button-addon1" class="form-control border-0 bg-light">
+                                    <div class="input-group-append">
+                                        <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i class="fa fa-search"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li>
+                            <span class="m-r-sm text-muted welcome-message">Chào mừng bạn đến với Quản trị Shop.</span>
+                        </li>
+                        @Html.Action("Actions", "Modules")
+
+
+                        <li class="dropdown">
+                            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                                <i class="fa fa-user"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-alerts">
+                                <li>
+                                    <a href="#" class="dropdown-item">
+                                        <div>
+                                            <i class="fa fa-user"></i> Xin chào, @Session["Admin_Name"]
+
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="dropdown-divider"></li>
+                                <li>
+                                    <a href="#" class="dropdown-item">
+                                        <div>
+                                            <i class="fa fa-user"></i> Tài khoản của tôi
+
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="~/Admin/Logout" class="dropdown-item">
+                                        <div>
+                                            <i class="fa fa-sign-out"></i> Đăng xuất
+
+                                        </div>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                    </ul>
+
+                </nav>
+            </div>
+            <!-- renderbody -->
+            @RenderBody()
+            <!-- renderbody -->
+        </div>
+
+
+
+    </div>
+    <script src="~/Public/admin/js/plugins/fullcalendar/moment.min.js"></script>
+
+    <!-- Mainly scripts -->
+
+    <script src="~/Public/admin/js/jquery-3.1.1.min.js"></script>
+    <script src="~/Public/admin/js/popper.min.js"></script>
+    <script src="~/Public/admin/js/bootstrap.js"></script>
+    <script src="~/Public/admin/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="~/Public/admin/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="~/Public/admin/status/js/karma.laclac.min.js"></script>
+    <script src="~/Public/admin/status/js/sweetalert2.min.js"></script>
+    <script src="~/Public/admin/status/js/toastr.min.js"></script>
+
+
+    <!-- Custom and plugin javascript -->
+    <script src="~/Public/admin/js/inspinia.js"></script>
+    <script src="~/Public/admin/js/plugins/pace/pace.min.js"></script>
+
+    <!-- FooTable -->
+    <script src="~/Public/admin/js/plugins/footable/footable.all.min.js"></script>
+    <!-- jQuery UI -->
+    <script src="~/Public/admin/js/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+
+            $('.footable').footable();
+            $('.footable2').footable();
+
+        });
+        //// search admin
+        //$(function () {
+        //    $('#button-addon1').off('click').on('click', function (e) {
+        //        e.preventDefault();
+        //        const dataVal = $('input[name=searchAdmin]').val().trim();
+        //        const ref = window.location.href;
+        //        let Product = ref.includes("Product");
+        //        if (Product) {
+        //            $.ajax({
+        //                url: '/Admin/Product',
+        //                type: 'POST',
+        //                data: {
+        //                    searchAdmin: dataVal,
+        //                },
+        //                dataType: 'json',
+        //                success: function (response) {
+        //                    if (response.result == 0) {
+        //                        WIYN();
+        //                    }
+        //                    else {
+        //                        window.location.reload();
+        //                    }
+        //                }
+        //            })
+        //        }
+        //        //let result = text.includes("world");
+        //        //let result = text.includes("world");
+
+        //        //if (ref)
+        //    });
+        //});
+        $(document).ready(function () {
+            $("#searchName").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#filterTble tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,450 @@
+﻿<style>
+    .nav-tabs1 {
+        margin-bottom: 15px;
+    }
+
+    .sign-with {
+        margin-top: 25px;
+        padding: 20px;
+    }
+
+    div#OR {
+        height: 30px;
+        width: 30px;
+        border: 1px solid #C2C2C2;
+        border-radius: 50%;
+        font-weight: bold;
+        line-height: 28px;
+        text-align: center;
+        font-size: 12px;
+        float: right;
+        position: absolute;
+        right: -16px;
+        top: 40%;
+        z-index: 1;
+        background: #DFDFDF;
+    }
+
+    .swal-modal {
+        width: 22rem !important;
+    }
+
+    .swal-title {
+        font-size: 15px !important;
+    }
+
+    .w100 {
+        width: 100%;
+    }
+
+    .swal-confirm {
+        height: 2rem;
+    }
+
+    .swal-styled {
+        font-size: 12px !important;
+    }
+
+    .swal-icon {
+        font-size: 9px !important;
+    }
+</style>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+@Html.Partial("_Nofit")
+<!-- HEADER-TOP START -->
+<div class="header-top">
+    <div class="container">
+        <div class="row">
+            <!-- HEADER-LEFT-MENU START -->
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="header-left-menu">
+                    <div class="welcome-info">
+
+                        <div class="header-right-callus">
+                        </div>
+
+                        <span>Hotline: 0364 242 261  </span>
+                        <span style="font-size:14px">| Địa chỉ: Đống Đa - Hà Nội</span>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="header-right-menu">
+                    <nav>
+                        @if (Session["User_Name"] == null)
+                        {
+                            <ul class="list-inline">
+
+                                <li>
+                                    <a href="#" type="button" data-toggle="modal" data-target=".bd-example-modal-lg"
+                                       data-whatever="getbootstrap" data-backdrop="static" data-keyboard="false">Đăng nhập</a>
+                                </li>
+
+                                <li>
+                                    <a href="#" type="button" data-toggle="modal" data-target="#exampleModal" data-backdrop="static"
+                                       data-keyboard="false">Tạo tài khoản</a>
+                                </li>
+                                <!--<li>-->
+                                @*<a href="~/theo-doi-don-hang" type="button">Theo dõi đơn hàng</a>*@
+                                <!--</li>-->
+                            </ul>
+                        }
+                        else
+                        {
+                            <ul class="list-inline">
+                                <li><a href="/account/order">Đơn hàng của bạn</a></li>
+                                <li><a href="#">Xin chào <span style="color:orangered;">@Session["User_Name"]</span></a></li>
+                                <li><a href="~/account/userlogout?url=@(HttpContext.Current.Request.Url.AbsolutePath)">Đăng xuất</a></li>
+                            </ul>
+                        }
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="header-middle">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="header-custom">
+                    <div class="logo">
+
+                        <a href="~/"><img src="~/Public/user/img/Anna/logo5.png" alt="Anna logo" style="width: 100px !important; height: 100px !important;" /></a>
+                        <div class="site-title">
+                            <h1>Perpetual - Time</h1>
+                            <p>Your time is Your Money</p>
+                        </div>
+                    </div>
+
+                    @Html.Action("CategorySearch", "Module")
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal Register-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="border-bottom: none">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    ×
+                </button>
+            </div>
+            <div class="modal-body" style="padding-top:0px">
+                <div class="row ">
+                    <div class="w100" style="padding-right: 30px;">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs1">
+                            <li class="active"><h3 style="padding-left: 24px;" data-toggle="tab">Đăng ký</h3></li>
+
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="Login">
+                                <form method="POST" class="form-horizontal">
+
+                                    <div class="form-group">
+                                        <label for="ten" class="col-sm-3 control-label" style="text-align: left; padding-left: 24px;">
+                                            Họ và tên
+                                        </label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" required
+                                                   name="ten" id="FullName" />
+                                        </div>
+                                        <small id="tenvalue" class="pl-1 form-text text-danger" style="padding-left: 165px;"></small>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="namelogin" class="col-sm-3 control-label" style="text-align: left; padding-left: 24px;">
+                                            Tên truy cập
+                                        </label>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control ten" placeholder="" value="" required
+                                                   name="namelogin" id="Name" />
+                                            <small id="namelogin" class="pl-1 form-text text-danger"></small>
+
+                                        </div>
+
+                                        <label for="email" class="col-sm-1 control-label" style="text-align: left;">
+                                            Email
+                                        </label>
+                                        <div class="col-sm-4">
+                                            <input type="email" class="form-control email" placeholder="" value="" required
+                                                   name="Email" id="Email" />
+                                            <small id="emailvalue" class="pl-1 form-text text-danger"></small>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="Address" class="col-sm-3 control-label" style="padding-right: 0px; text-align: left; padding-left: 24px;">
+                                            Địa chỉ
+                                        </label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control address" placeholder="" value="" required
+                                                   name="address" id="Address" />
+                                        </div>
+                                        <small id="addressvalue" class="pl-1 form-text text-danger" style="padding-left: 165px;"></small>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone" class="col-sm-3 control-label" style="padding-right: 0px; text-align: left; padding-left: 24px;">
+                                            Số điện thoại
+                                        </label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control valiphone Phone8" id="validphone"
+                                                   placeholder="" required name="phone" />
+                                        </div>
+                                        <small id="phonevalue" class="pl-1 form-text text-danger" style="padding-left: 165px;"></small>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="password" class="col-sm-3 control-label" style="padding-right: 0px; text-align: left; padding-left: 24px;">
+                                            Mật khẩu
+                                        </label>
+                                        <div class="col-sm-9">
+                                            <input type="password" class="form-control pass-res" placeholder="" required
+                                                   name="pass" id="Pass" />
+                                        </div>
+                                        <small id="passwordvalue" class="pl-1 form-text text-danger" style="padding-left: 165px;"></small>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="repass" class="col-sm-3 control-label" style="padding-right: 0px; text-align: left; padding-left: 24px;">
+                                            Nhập lại mật khẩu
+                                        </label>
+                                        <div class="col-sm-9">
+                                            <input type="password" class="form-control pl-2  repass-res" placeholder=""
+                                                   required name="repass" />
+                                        </div>
+                                        <small id="repassvalue" class="pl-1 form-text text-danger" style="padding-left: 165px;"></small>
+
+                                    </div>
+                                    <div class="form-group;" style="margin-left:10px">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck3"
+                                                   required checked>
+                                            <label class="form-check-label mini-s-c" for="invalidCheck3">
+                                                Tôi đồng ý với các điều khoản dịch vụ
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-2">
+
+                                        </div>
+                                        <div class="col-sm-10">
+                                            @*<input type="submit" class="btn btn-primary btn-sm mini-s-c" value="Đăng ký"/>*@
+
+                                            <button type="button" class="btn btn-primary btn-sm mini-s-c" id="btn_register">
+                                                Đăng ký
+                                            </button>
+                                            <button type="button" class="btn btn-default btn-sm" id="btn_exsits" data-dismiss="modal" aria-hidden="true">
+                                                Hủy
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="tab-pane" id="Registration">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $('#btn_register').click(function (e) {
+        e.preventDefault()
+        $(':input', 'small')
+            .not(':button, :reset, :hidden')
+            .val('')
+        const namelogin = $('input[name=namelogin]').val().trim();
+        const ten = $('input[name=ten]').val().trim();
+        const Email = $('input[name=Email]').val().trim();
+        const address = $('input[name=address]').val().trim();
+        const phone = $('input[name=phone]').val();
+        const pass = $('input[name=pass]').val().trim();
+        const repass = $('input[name=repass]').val().trim();
+        var checkaccess = $('#invalidCheck3').is(":checked");
+        if (namelogin == '') {
+            $('#namelogin').html('Vui lòng nhập tên tài khoản!');
+        }
+        else {
+            $('#namelogin').html('');
+        }
+        if (ten == '') {
+            $('#tenvalue').html('Vui lòng nhập họ và tên!');
+        }
+        else {
+            $('#tenvalue').html('');
+        }
+        if (Email == '') {
+            $('#emailvalue').html('Vui lòng nhập email!');
+        }
+        else {
+            $('#emailvalue').html('');
+        }
+        if (address == '') {
+            $('#addressvalue').html('Vui lòng nhập địa chỉ!');
+        }
+        else {
+            $('#addressvalue').html('');
+        }
+
+        if (phone == '') {
+            $('#phonevalue').html('Vui lòng nhập số điện thoại!');
+        }
+        else {
+            $('#phonevalue').html('');
+        }
+        if (pass == '') {
+            $('#passwordvalue').html('Vui lòng nhập mật khẩu!');
+        }
+        else {
+            $('#passwordvalue').html('');
+        }
+        if (repass == '') {
+            $('#repassvalue').html('Vui lòng nhập lại mật khẩu!');
+        }
+        else if (repass != pass) {
+            $('#repassvalue').html('Mật khẩu không trùng khớp !');
+            return false;
+        }
+        else {
+            $('#repassvalue').html('');
+        }
+
+        if (namelogin == '' || ten == '' || Email == '' || address == '' || phone == '' || pass == '' || repass == '' || !checkaccess) {
+            return false;
+        }
+
+        $.ajax({
+            url: "account/Register",
+            type: "POST",
+            data: {
+                inputData: {
+                    Email: $('#Email').val(),
+                    Address: $('#Address').val(),
+                    FullName: $('#FullName').val(),
+                    Name: $('#Name').val(),
+                    Password: $('#Pass').val(),
+                    Phone: $('#validphone').val()
+                }
+            },
+
+            dataType: 'json',
+            success: function (data) {
+
+                if (data.Code == 0) {
+                    $('#exampleModal').modal("hide")
+
+
+                    $(':input', 'small')
+                        .not(':button, :reset, :hidden')
+                        .val('')
+
+                    swal({
+                        icon: "success",
+                        title: data.Message,
+                        timer: 5000
+                    });
+                    window.location.reload();
+                    return;
+                } else if (data.Code == 1) {
+                    swal({
+                        icon: "warning",
+                        title: data.Message,
+                        timer: 5000
+                    });
+                    $(':input', 'small')
+                        .not(':button, :reset, :hidden')
+                        .val('')
+                    return;
+                }
+                swal({
+                    icon: "warning",
+                    title: data.Message,
+                    timer: 5000
+                });
+            }
+        })
+    })
+
+    $('#btn_exsits').click(function (e) {
+        $(".form-horizontal")[0].reset();      
+    })
+</script>
+<!-- Modal Login-->
+<div class="modal fade bd-example-modal-lg" id="exampleModal1" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog " role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="border-bottom: none">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    ×
+                </button>
+            </div>
+            <div class="modal-body" style="padding-top:0px">
+                <div class="row">
+                    <div class="w100" style="padding-right: 30px;">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs1">
+                            <li class="active"><a href="#Login" data-toggle="tab">Đăng nhập</a></li>
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="Login">
+                                <form method="POST" class="form-horizontal">
+                                    <div class="form-group">
+                                        <label for="email" class="col-sm-2 control-label" style="padding-right :0px">
+                                            Tài khoản
+                                        </label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" aria-describedby="emailHelp" name="Name" />
+                                        </div>
+                                        <small id="nameHelp" class="pl-1 form-text text-danger" style="padding-left: 116px ;"></small>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1" class="col-sm-2 control-label" style="padding-right :0px">
+                                            Mật khẩu
+                                        </label>
+                                        <div class="col-sm-10">
+                                            <input type="password" class="form-control" placeholder="" name="Password" value="" />
+                                        </div>
+                                        <small id="passHelp" class="pl-1 form-text text-danger" style="padding-left: 116px ;"></small>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-2">
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <button id="btn_login_c" class="btn btn-primary mt-1 float-left  mb-3">
+                                                Đăng nhập
+                                            </button>
+                                            <button id="btn_forgot_c-prev" class="btn btn-primary mt-1 float-left  mb-3">
+                                                Quên mật khẩu ?
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

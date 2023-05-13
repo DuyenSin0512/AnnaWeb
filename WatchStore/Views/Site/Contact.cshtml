@@ -1,0 +1,295 @@
+﻿@{
+    ViewBag.Title = "Liên hệ";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+@Html.Partial("_Nofit")
+<section class="main-content-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <!-- BSTORE-BREADCRUMB START -->
+                <div class="bstore-breadcrumb">
+                    <a href="~/">Trang chủ</a>
+                    <span><i class="fa fa-caret-right"></i></span>
+                    <span>Liên hệ</span>
+                </div>
+                <!-- BSTORE-BREADCRUMB END -->
+            </div>
+        </div>
+        <section class="contact-sec sec-pad">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="contact-detail">
+                            <h1 class="section-title">Liên hệ với chúng tôi: </h1>
+
+                            <ul class="contact-ul">
+                                <li>
+                                    <i class="fa fa-location-arrow fa-location-dot"></i>
+                                    254 Đống đa , Hà Nội
+                                </li>
+                                <li>
+                                    <i class="fa fa-phone"></i>
+                                    <a href="tel:08510004495"><b>0824356272</b></a>,
+                                    <a href="tel:08510005495"><b>0224386521</b></a>
+                                </li>
+
+                                <li>
+                                    <i class="fa fa-envelope-o fa-envelope"></i>
+                                    <a href="mailto:pardeepkumar4bjp@gmail.com"><b> AnnaShop@gmail.com</b></a>
+                                </li>
+                            </ul>
+                            <ul class="flow-us-link">
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <form  class="contFrm" method="POST" action="Site/SubmitContact">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control input-feild inptFld" placeholder="Nhập tên " id="contactName" name="Fullname" required value="">
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <input type="email" class="form-control input-feild inptFld" placeholder="Địa chỉ email" id="contactEmail" name="Email" value="" required>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <input type="number" class="form-control input-feild inptFld" placeholder="Số điện thoại"  id="contactPhone" name="Phone" value="" required>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control input-feild inptFld" placeholder="Tiêu đề" id="contactTitle" name="Title" value="" required>
+                                </div>
+
+                                <div class="col-12">
+                                    <textarea class="contact-text inptFld" placeholder="Lời nhắn..." name="Detail" rows="" cols="" required></textarea>
+                                </div>
+
+                                <div class="col-12">
+                                    <button type="submit" name="submit" id="sendMessage" class="send-message main-btn inptBtn">Gửi Tin </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        @*<div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <h2 class="page-title contant-page-title">Nếu có góp ý bạn hãy đóng góp ý kiến bên dưới cho Shop</h2>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+         CONTACT-US-FORM START 
+        <div class="contact-us-form">
+        <div class="contact-form-center">
+            <h3 class="contact-subheading"></h3>
+         CONTACT-FORM START 
+        <form class="contact-form" id="contactForm" method="POST" action="Site/SubmitContact">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+
+                                <div class="form-group primary-form-group">
+                                    <label>Tên</label>
+                                    <input type="text" class="form-control input-feild" id="contactEmail" name="Fullname" value="">
+                                </div>
+                                <div class="form-group primary-form-group">
+                                    <label>Email</label>
+                                    <input type="email" class="form-control input-feild" id="contactEmail" name="Email" value="">
+                                </div>
+                                <div class="form-group primary-form-group">
+                                    <label>Số điện thoại</label>
+                                    <input type="text" class="form-control input-feild" id="contactEmail" name="Phone" value="">
+                                </div>
+                                <div class="form-group primary-form-group">
+                                    <label>Tiêu đề liên hệ</label>
+                                    <input type="text" class="form-control input-feild" id="contactEmail" name="Title" value="">
+                                </div>
+                                <button type="submit" name="submit" id="sendMessage" class="send-message main-btn">Send </button>
+                            </div>
+                            <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
+                                <div class="type-of-text">
+                                    <div class="form-group primary-form-group">
+                                        <label>Nội dung liên hệ</label>
+                                        <textarea class="contact-text" name="Detail"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+
+    </div>
+</section>
+
+<style>
+
+* {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 16px;
+}
+ul {
+  list-style: none;
+}
+
+input {
+  overflow: hidden;
+}
+
+.section-title {
+  position: relative;
+  font-size: 30px;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  margin: 0 0 35px;
+}
+
+.sec-pad {
+  padding: 60px 0 0;
+  margin: 50px 0;
+}
+
+.contact-sec {
+  align-item: center;
+  display: flex;
+  background-color: #5cbde466;
+}
+
+.contact-sec .contact-ul li,
+.contact-ul b {
+  font-size: 20px;
+  margin: 10px 0;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  word-wrap: break-word;
+}
+
+.contact-sec .contact-ul i {
+  font-size: 18px;
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+.contact-detail a {
+  color: #000;
+  text-decoration: none;
+}
+
+.contact-sec .contact-ul li b:hover {
+  color: #f93;
+}
+
+.contact-sec .contact-ul li .fa-location-dot {
+  color: #f44337;
+  border: 2px solid #f4433790;
+}
+
+.contact-sec .contact-ul li .fa-phone {
+  color: #00b055;
+  border: 2px solid #00b05590;
+}
+
+.contact-sec .contact-ul li .fa-envelope {
+  color: #ff6347;
+  border: 2px solid #ff634790;
+}
+
+.contact-detail span {
+  width: 400px;
+  display: flex;
+  justify-content: center;
+}
+.contact-detail span a {
+  font-size: 20px;
+  padding: 6px 12px;
+  color: #000;
+  border-radius: 50%;
+  margin: 0px 5px;
+}
+.contact-detail span .fb {
+  color: #3b5998;
+  border: 3px solid #3b5998;
+}
+.contact-detail span .fb:hover {
+  color: #fff;
+  background-color: #3b5998;
+}
+
+.contact-detail span .insta {
+  color: #833ab4;
+  border: 3px solid #833ab4;
+}
+.contact-detail span .insta:hover {
+  color: #fff;
+  background-color: #833ab4;
+}
+
+.contact-detail span .twitter {
+  color: #00acee;
+  border: 3px solid #00acee;
+}
+.contact-detail span .twitter:hover {
+  color: #fff;
+  background-color: #00acee;
+}
+
+form.contFrm {
+  max-width: 396px;
+  margin: auto;
+}
+
+.inptFld {
+  width: 100%;
+  height: 50px;
+  border: 0;
+  margin: 0 0 10px !important;
+  border-radius: 8px;
+  padding: 0 20px !important;
+  font-size: 16px;
+  color: #000;
+}
+
+.inptFld:focus {
+  outline-offset: -4px;
+  outline: 1px solid #f93;
+}
+.col-sm-6, col-12{
+    padding: 4px !important;
+}
+
+.contFrm textarea {
+  height: 75px;
+  padding-top: 5px !important;
+}
+.inptBtn {
+  height: 50px;
+  border: 0;
+  background: #00b055;
+  font-size: 14px;
+  color: #fff;
+  margin: auto;
+  letter-spacing: 1px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 200px;
+}
+
+
+/* Responcive css Start */
+</style>

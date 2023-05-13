@@ -1,0 +1,30 @@
+﻿@{
+    var isNew = ViewBag.IsNew;
+    var IsNomal = ViewBag.IsNomal;
+    var IsSale = ViewBag.IsSale;
+}
+
+<section class="main-content-section">
+    <div class="container">
+        <div class="row category-child">
+
+            <!-- LEFT-SIDEBAR START -->
+            <div class="col-lg-12 col-xs-12">
+
+                @Html.Action("Feature", "Module")
+                @if (IsSale)
+                {
+                    @Html.Action("Sale", "Module")
+                }
+                @if (isNew)
+                {
+                    @Html.Action("ProductNew", "Module")
+                }
+
+
+                @Html.Action("Sell", "Module")
+            </div>
+        </div>
+
+    </div>
+</section>

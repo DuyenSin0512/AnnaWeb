@@ -1,0 +1,49 @@
+﻿@model IEnumerable<WatchStore.Models.MTopic>
+@{
+    ViewBag.Title = "ForgotPass";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+<div class="card login-form">
+    <div class="card-body">
+        <h3 class="card-title text-center">Xác thực email</h3>
+
+        <div class="card-text">
+            <form>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email</label>
+                    <input name="Forgotemail" type="email" class="form-control form-control-sm" placeholder="nhập địa chỉ email">
+                    <small id="errEmailinput" class="pl-1 form-text text-danger" ></small>
+                </div>
+                
+
+                <button type="submit" id="btn_forgot_c" class="btn btn-primary btn-block">Gửi</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card{
+       left: calc(50% - 150px);
+       position:relative;
+    }
+    /*form {
+        padding-top: 10px;
+        font-size: 14px;
+        margin-top: 30px;
+    }*/
+
+    .card-title {
+        font-weight: 300;
+    }
+
+    .login-form {
+        width: 320px;
+        margin: 20px;
+    }
+
+    .sign-up {
+        text-align: center;
+        padding: 20px 0 0;
+    }
+</style>
